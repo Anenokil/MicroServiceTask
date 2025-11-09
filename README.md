@@ -9,13 +9,15 @@
 
 ## Основные API endpoints
 
-- ```GET  /system/health                    # Проверка состояния системы```
-- ```GET  /api/collector/batch?size=N       # Получить данные```
-- ```POST /api/storage/data/raw             # Сохранить данные```
-- ```POST /api/storage/data/clear           # Очистить БД```
-- ```POST /api/ml/train                     # Обучить модель```
-- ```POST /api/ml/predict                   # Предсказание```
-- ```GET  /api/ml/model/info                # Информация о модели```
+```text
+GET  /system/health                    # Проверка состояния системы
+GET  /api/collector/batch?size=N       # Получить данные
+POST /api/storage/data/raw             # Сохранить данные
+POST /api/storage/data/clear           # Очистить БД
+POST /api/ml/train                     # Обучить модель
+POST /api/ml/predict                   # Предсказание
+GET  /api/ml/model/info                # Информация о модели
+```
 
 ## Рабочий процесс
 
