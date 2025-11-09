@@ -1,0 +1,67 @@
+services:
+  collector:
+    build: ./collector
+    ports:
+      - "5001:5000"
+    environment:
+      - STORAGE_SERVICE_URL=http://storage:5000
+    volumes:
+      - ./collector/data:/app/data
+    networks:
+      - app-network
+
+  storage:
+    build: ./storage
+    ports:
+      - "5002:5000"
+    environment:
+      - DATABASE_URL=postgresql://user:password@db:5432/mydb
+    depends_on:
+      - db
+    networks:
+      - app-network
+
+  ml_service:
+    build: ./ml_service
+    ports:
+      - "5003:5000"
+    environment:
+      - STORAGE_SERVICE_URL=http://storage:5000
+    volumes:
+      - ./ml_service/ml_model:/app/ml_model
+    networks:
+      - app-network
+
+  web_master:
+    build: ./web_master
+    ports:
+      - "5000:5000"
+    environment:
+      - COLLECTOR_URL=http://collector:5000
+      - STORAGE_URL=http://storage:5000
+      - ML_SERVICE_URL=http://ml_service:5000
+    depends_on:
+      - collector
+      - storage
+      - ml_service
+    networks:
+      - app-network
+
+  db:
+    image: postgres:13
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=mydb
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./storage/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - app-network
+
+volumes:
+  postgres_data:
+
+networks:
+  app-network:
+    driver: bridge
