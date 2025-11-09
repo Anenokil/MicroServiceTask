@@ -2,21 +2,22 @@
 
 ## Сервисы:
 
-- Web Master (порт 5000) - единая точка входа, маршрутизация запросов
-- Collector (порт 5001) - сбор и выдача батчей данных
-- Storage (порт 5002) - хранение данных в PostgreSQL
-- ML Service (порт 5003) - обучение моделей и предсказания
-- PostgreSQL (порт 5432) - база данных
+- Web Master - единая точка входа, маршрутизация запросов
+- Collector - сбор и выдача батчей данных
+- Storage - хранение данных в PostgreSQL
+- ML Service - обучение моделей и предсказания
 
 ## Основные API endpoints
 
-- ```GET  /system/health                    # Проверка состояния системы```
-- ```GET  /api/collector/batch?size=N       # Получить данные```
-- ```POST /api/storage/data/raw             # Сохранить данные```
-- ```POST /api/storage/data/clear           # Очистить БД```
-- ```POST /api/ml/train                     # Обучить модель```
-- ```POST /api/ml/predict                   # Предсказание```
-- ```GET  /api/ml/model/info                # Информация о модели```
+```text
+GET  /system/health                    # Проверка состояния системы
+GET  /api/collector/batch?size=N       # Получить данные
+POST /api/storage/data/raw             # Сохранить данные
+POST /api/storage/data/clear           # Очистить БД
+POST /api/ml/train                     # Обучить модель
+POST /api/ml/predict                   # Предсказание
+GET  /api/ml/model/info                # Информация о модели
+```
 
 ## Рабочий процесс
 
