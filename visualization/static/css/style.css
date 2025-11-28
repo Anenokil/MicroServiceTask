@@ -1,0 +1,65 @@
+body {
+    background-color: #f8f9fa;
+}
+
+.card {
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border: none;
+}
+
+.card-header {
+    background-color: #343a40;
+    color: white;
+    border-radius: 10px 10px 0 0 !important;
+}
+
+.btn-action {
+    min-width: 120px;
+}
+
+.alert {
+    border-radius: 8px;
+}
+
+.status-healthy {
+    color: #28a745;
+    animation: pulse 2s infinite;
+}
+
+.status-unhealthy {
+    color: #dc3545;
+    animation: blink 1s infinite;
+}
+
+.status-unknown {
+    color: #6c757d;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0.3; }
+}
+
+.chart-container {
+    background: white;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 10px 0;
+    border: 1px solid #dee2e6;
+}
+
+.table {
+    font-size: 0.85rem;
+}
+
+.table th {
+    background-color: #f8f9fa;
+    border-top: none;
+}

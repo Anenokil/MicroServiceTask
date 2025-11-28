@@ -47,6 +47,17 @@ services:
     networks:
       - app-network
 
+  visualization:
+    build: ./visualization
+    ports:
+      - "5004:5000"
+    environment:
+      - WEB_MASTER_URL=http://web_master:5000
+    depends_on:
+      - web_master
+    networks:
+      - app-network
+
   db:
     image: postgres:13
     environment:
